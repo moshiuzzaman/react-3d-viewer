@@ -1,0 +1,27 @@
+.config-section-header {
+	width: 100%;
+	background: #f1f1f1;
+	font-size: 14px;
+	font-weight: 500;
+	padding: 18px 0 15px 30px;
+	border-bottom: 1px solid #d8dee2;
+	stroke: #eaeaea;
+	text-align: center;
+}
+.accordion-button {
+	color: #009fdb !important;
+	font-weight: bold;
+}
+
+.bc1,
+.bc2,
+.bc3,
+.bc4,
+.bc5,
+.bc6 {
+	width: 40px;
+	height: 40px;
+	border-radius: 7px;
+	display: inline-block;
+	margin: 2px;
+}

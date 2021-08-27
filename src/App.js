@@ -1,5 +1,28 @@
 import { Accordion, Col, Container, Row } from 'react-bootstrap';
+import { Canvas } from "react-three-fiber";
+import { OrbitControls } from "drei"
+import { Physics } from "use-cannon";
 import './App.css';
+
+
+function Box() {
+	//const [ref, api] = useBox(() => ({ mass: 1, position: [0, 2, 0] }));
+	return (
+	  <mesh
+	  >
+		<boxBufferGeometry attach="geometry" />
+		<meshLambertMaterial attach="material" color="hotpink" />
+	  </mesh>
+	);
+  }
+
+  
+  var zoom = 50,
+  	  autoRotate = true,
+  	  rotSpeed = 5,
+	  // rotBottom = 32, //Descending from 32 to 1 for bottom view
+	 //  rotTop = 1, //Ascending from 1 to 32 for top view
+  	  zoomEnable = true;
 
 function App() {
 	return (
@@ -10,12 +33,27 @@ function App() {
 				</h1>
 				<Row>
 					<Col md="7">
-						<canvas
+						<Canvas
 							id="renderCanvas"
 							width="650px"
 							height="740"
 							className="bg-info"
-						></canvas>
+							camera={{ position: [0, 0, 4], fov: zoom }}>
+							
+							<ambientLight intensity={0.5} />
+							<spotLight intensity={0.5} position={[25, 25, 25]} angle={0.1}  />
+							<Physics>
+							<OrbitControls 
+								minPolarAngle={Math.PI/32 } 
+								maxPolarAngle={Math.PI } 
+								enableZoom={zoomEnable} 
+								autoRotate={autoRotate} 
+								autoRotateSpeed = {rotSpeed}
+							/>
+							<Box />
+							</Physics>
+						</Canvas>
+						
 					</Col>
 					<Col md="5">
 						<div className="config-section-header">
